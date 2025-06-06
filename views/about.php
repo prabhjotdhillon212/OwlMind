@@ -1,12 +1,12 @@
-<?php include '../inc/config.inc'; ?>
+<?php require_once "../inc/config.inc"; ?>
 
-<?php include '../inc/headtags.inc'; ?>
+<?php include ROOT_PATH . "inc/headtags.inc"; ?>
 <body>
   <!-- Navbar -->
-  <?php include '../inc/header.inc'; ?>
+  <?php include ROOT_PATH . "inc/header.inc"; ?>
   <main>
 
   </main>
     <!-- Footer -->
-  <?php include '../inc/footer.inc'; ?>
+  <?php include ROOT_PATH . "inc/footer.inc"; ?>
 </body>

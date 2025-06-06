@@ -1,5 +1,8 @@
 <?php
 
+define( "BASE_URL", "/SCSU-CSC400/");
+define("ROOT_PATH", $_SERVER["DOCUMENT_ROOT"] . "/SCSU-CSC400/");
+
 define("COMPANY_NAME", "Southern Connecticut State University");
 define("COPYYEAR", "2025");
 

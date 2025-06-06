@@ -12,8 +12,8 @@
       <h1>Welcome to <?php echo SITE_NAME; ?></h1>
       <p>Your mental health matters. Let’s take care of it together.</p>
       <div class="btn-container">
-        <a href="views/signup.html" class="btn btn-outline">Sign Up</a>
-        <a href="views/login.html" class="btn">Log In</a>
+        <a href="views/signup.php" class="btn btn-outline">Sign Up</a>
+        <a href="views/login.php" class="btn">Log In</a>
       </div>
     </div>
   </main>
