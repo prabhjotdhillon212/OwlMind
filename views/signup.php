@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign Up - Owl Mind</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+<?php include '../inc/config.inc'; ?>
+
+<?php include '../inc/headtags.inc'; ?>
 <body>
   <!-- Navbar -->
-  <header>
-    <div class="nav">
-      <a href="index.html" class="logo">Owl Mind</a>
-    </div>
-  </header>
+  <?php include '../inc/header.inc'; ?>
 
   <!-- Signup Form -->
   <main>
@@ -31,9 +22,7 @@
   </main>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Owl Mind</p>
-  </footer>
+  <?php include '../inc/footer.inc'; ?>
 
   <!-- JavaScript validation -->
   <script>
@@ -52,4 +41,3 @@
     });
   </script>
 </body>
-</html>

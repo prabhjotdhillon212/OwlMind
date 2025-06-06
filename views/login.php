@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Log In - Owl Mind</title>
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
+<?php include '../inc/config.inc'; ?>
+
+<?php include '../inc/headtags.inc'; ?>
 <body>
-  <header>
-    <div class="nav">
-      <a href="index.html" class="logo">Owl Mind</a>
-    </div>
-  </header>
+  <!-- Navbar -->
+  <?php include '../inc/header.inc'; ?>
 
   <main>
     <div class="main-card">
@@ -25,8 +17,6 @@
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Owl Mind</p>
-  </footer>
+  <!-- Footer -->
+  <?php include '../inc/footer.inc'; ?>
 </body>
-</html>
