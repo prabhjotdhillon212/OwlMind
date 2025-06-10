@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-<?php require_once ROOT_PATH . "inc/config.inc"; ?>
-=======
+<?php require_once "../inc/config.inc"; ?>
 <?php
 session_start();
-require_once("../inc/config.inc");
->>>>>>> 2a59793 (Added all the new pages, dashboard)
 
 // TEMPORARY: Dev preview — remove this once login system is active
 if (!isset($_SESSION['email'])) {
