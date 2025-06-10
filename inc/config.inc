@@ -10,11 +10,10 @@ if (!defined("SITE_NAME")) define("SITE_NAME", "OwlMind");
 
 if (!defined("NAV_ITEM_ONE")) define("NAV_ITEM_ONE", "Home");
 if (!defined("NAV_ITEM_TWO")) define("NAV_ITEM_TWO", "Appointments");
-if (!defined("NAV_ITEM_THREE")) define("NAV_ITEM_THREE", "Appointments");
-if (!defined("NAV_ITEM_FOUR")) define("NAV_ITEM_FOUR", "Journal");
-if (!defined("NAV_ITEM_FIVE")) define("NAV_ITEM_FIVE", "Mood Recorder");
-if (!defined("NAV_ITEM_SIX")) define("NAV_ITEM_SIX", "Resources");
-if (!defined("NAV_ITEM_SEVEN")) define("NAV_ITEM_SEVEN", "My Profile");
-if (!defined("NAV_ITEM_EIGHT")) define("NAV_ITEM_EIGHT", "About Us");
+if (!defined("NAV_ITEM_THREE")) define("NAV_ITEM_THREE", "Journal");
+if (!defined("NAV_ITEM_FOUR")) define("NAV_ITEM_FOUR", "Mood Recorder");
+if (!defined("NAV_ITEM_FIVE")) define("NAV_ITEM_FIVE", "Resources");
+if (!defined("NAV_ITEM_SIX")) define("NAV_ITEM_SIX", "My Profile");
+if (!defined("NAV_ITEM_SEVEN")) define("NAV_ITEM_SEVEN", "About Us");
 
 ?>
