@@ -232,3 +232,39 @@ footer p:hover {
   padding-top: 20px;
   line-height: 1.6;
 }
+
+dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  padding-left: 100px; 
+}
+
+.dash-tile {
+  background: white;
+  color: #0077b6;
+  border: 2px solid #0077b6;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 119, 182, 0.1);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* align children (like the buttons) to the left */
+  padding: 40px;
+}
+
+
+.dash-tile:hover {
+  background: #0077b6;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 119, 182, 0.2);
+}
