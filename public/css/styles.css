@@ -1,4 +1,4 @@
-/* Layout */
+/* ===== GLOBAL LAYOUT ===== */
 html, body {
   height: 100%;
   margin: 0;
@@ -6,39 +6,42 @@ html, body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Soft gradient background */
-body {
-  display: flex;
-  flex-direction: column;
   background: linear-gradient(to bottom right, #e6faff, #d4f1f9);
   color: #333;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Navbar */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ===== NAVBAR ===== */
 .navbar-dark.bg-dark {
   background-color: #264653 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding-top: 18px;
-  padding-bottom: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  padding: 18px 0;
 }
 
 .navbar-brand {
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
   color: white !important;
+  padding-left: 1rem;
 }
 
-/* Nav Links with animated underline */
 .nav-link {
   position: relative;
   font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   color: white !important;
-  padding: 0.5rem 0.8rem;
+  padding: 0.5rem 1rem;
 }
 
 .nav-link::after {
@@ -47,8 +50,8 @@ body {
   width: 0%;
   height: 2px;
   left: 50%;
-  bottom: 5px;
-  background-color: #aad8ff;
+  bottom: 4px;
+  background-color: #79d0ff;
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -57,134 +60,86 @@ body {
   left: 10%;
 }
 
-.logo {
-  color: white;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.logo:hover {
-  color: #aad8ff;
-}
-
-/* Main layout */
-main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-}
-
-/* Card-style box with glow and hover lift */
+/* ===== CARD FORM CONTAINER ===== */
 .main-card {
   background: white;
-  padding: 40px 30px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 119, 182, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
-  text-align: center;
-  max-width: 420px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 340px;
   width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .main-card:hover {
-  transform: scale(1.015);
-  box-shadow: 0 16px 32px rgba(0, 119, 182, 0.15), 0 6px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-.welcome-img {
-  width: 140px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-/* Typography */
 .main-card h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   color: #01497c;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
 }
 
-.main-card p {
-  font-size: 1.05rem;
-  color: #444;
-  line-height: 1.6;
-  margin-bottom: 25px;
-}
-
-h2, h3, h4 {
-  font-weight: 600;
-  color: #01497c;
-  letter-spacing: 0.3px;
-}
-
-/* Buttons with gradient and glow */
-.btn-container {
+/* ===== FORM FIELDS ===== */
+.form {
   display: flex;
-  justify-content: center;
-  gap: 15px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.btn {
-  padding: 12px 25px;
-  font-size: 1.05rem;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  background: linear-gradient(to right, #0077b6, #00a8e8);
-  color: white;
-  text-decoration: none;
+.form input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 0 2px rgba(0, 119, 182, 0.2);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  background: #0077b6;
+  color: white;
+  padding: 10px;
   border: none;
-  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.25);
-  transition: all 0.2s ease;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #005f8f;
 }
 
 .btn-outline {
   background: white;
   color: #0077b6;
   border: 2px solid #0077b6;
-}
-
-.btn:hover {
-  background: linear-gradient(to right, #00a8e8, #0077b6);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 119, 182, 0.35);
+  box-shadow: none;
 }
 
 .btn-outline:hover {
-  border: 2px solid #0077b6;
+  background-color: #e0f7fa;
   color: #0077b6;
-  transform: translateY(-2px);
 }
 
-/* Form */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form input {
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.form input:focus {
-  border-color: #0077b6;
-}
-
+/* ===== FORM FOOTER ===== */
 .form-footer {
-  margin-top: 10px;
-  font-size: 0.95rem;
+  margin-top: 12px;
+  font-size: 0.9rem;
 }
 
 .form-footer a {
@@ -197,22 +152,13 @@ h2, h3, h4 {
   text-decoration: underline;
 }
 
-/* Error Message */
-.error {
-  color: #d90429;
-  font-size: 0.9rem;
-  text-align: left;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-/* Footer */
+/* ===== FOOTER ===== */
 footer {
   background-color: #264653;
   color: #e0f7fa;
   text-align: center;
   font-size: 0.9rem;
-  padding: 18px 0;
+  padding: 15px 0;
   border-top: 1px solid #174250;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
   margin-top: auto;
@@ -223,224 +169,43 @@ footer p:hover {
   transition: 0.3s;
 }
 
-/* Fade-in animation on page load */
+/* ===== ANIMATIONS ===== */
 .fade-in {
   animation: fadeIn 0.8s ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Make sure all buttons align properly */
-.btn-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-/* Optional wave animation for welcome */
-.wave {
-  display: inline-block;
-  animation: wave 1.4s infinite;
-  transform-origin: 70% 70%;
-}
-
-@keyframes wave {
-  0% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  45% { transform: rotate(14deg); }
-  60% { transform: rotate(-4deg); }
-  75% { transform: rotate(10deg); }
-  100% { transform: rotate(0deg); }
-}
-
-/* ---------------------- ADDITIONS ---------------------- */
-
-/* Fix layout to keep footer at bottom on short pages */
-html {
-  height: 100%;
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Make sure main can push footer down */
-main {
-  flex: 1;
-}
-
-/* Dashboard Tile Grid for Homepage */
-.dashboard-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.dash-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: 2px solid #0077b6;
-  border-radius: 14px;
-  padding: 20px;
-  width: 160px;
-  height: 70px;
-  color: #0077b6;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0, 119, 182, 0.1);
-  transition: all 0.25s ease;
-}
-
-.dash-tile:hover {
-  background: #0077b6;
-  color: white;
-  transform: translateY(-4px);
-}
-
-/* Optional home summary (quote/status/mood display) */
-.home-summary {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid #e0f0f4;
-  color: #444;
-  font-size: 1rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* Fade up entrance animation for hero box */
-.hero-container {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+/* ===== RESPONSIVE ===== */
+@media (max-width: 575.98px) {
+  .main-card {
+    padding: 20px 15px;
+    max-width: 95%;
+    margin: 10px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .main-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .form input {
+    padding: 9px 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 9px;
+    font-size: 0.95rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
   }
 }
-
-
-.hero-heading {
-  font-size: 2.4rem;
-  color: #01497c;
-  margin-bottom: 10px;
-}
-
-.hero-name {
-  color: #0077b6;
-}
-
-.hero-subtext {
-  font-size: 1.15rem;
-  color: #555;
-  margin-bottom: 30px;
-}
-
-.home-summary {
-  margin-top: 30px;
-  padding-top: 20px;
-  font-size: 1rem;
-  color: #444;
-  border-top: 1px solid #e0f0f4;
-  line-height: 1.6;
-}
-
-/* Landing card style for index.php hero layout */
-.main-card.landing {
-  padding: 60px 50px;
-  max-width: 600px;
-  animation: fadeInUp 0.6s ease-out;
-  margin-top: 40px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.main-card.landing:hover {
-  transform: scale(1.02);
-  box-shadow: 0 18px 36px rgba(0, 119, 182, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-/* Slight animation delay for button container */
-.main-card.landing .btn-container {
-  animation: fadeInUp 0.5s ease-out 0.2s;
-  animation-fill-mode: both;
-}
-
-/* Optional enhancement: larger owl logo with glow */
-.welcome-img.hero-logo {
-  width: 150px;
-  margin-bottom: 30px;
-  border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(0, 119, 182, 0.2);
-}
-
-
-/* Improved dashboard container spacing */
-.hero-container {
-  background: white;
-  padding: 60px 60px;
-  border-radius: 24px;
-  box-shadow: 0 10px 50px rgba(0, 119, 182, 0.15);
-  max-width: 850px;
-  text-align: center;
-  animation: fadeInUp 0.6s ease-out;
-}
-
-/* Enhanced dashboard header */
-.hero-heading {
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #01497c;
-  margin-bottom: 10px;
-}
-
-.hero-subtext {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 35px;
-}
-
-/* Animated grid for dashboard tiles */
-.dashboard-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-}
-
-.dash-tile {
-  background: white;
-  border: 2px solid #0077b6;
-  border-radius: 12px;
-  padding: 20px 30px;
-  width: 180px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #0077b6;
-  box-shadow: 0 6px 18px rgba(0, 119, 182, 0.08);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.dash-tile:hover {
-  background: #0077b6;
-  color: white;
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 10px 24px rgba(0, 119, 182, 0.25);
-}
-
