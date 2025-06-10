@@ -1,3 +1,4 @@
+
 /* ===== GLOBAL LAYOUT ===== */
 html, body {
   height: 100%;
@@ -179,33 +180,55 @@ footer p:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 575.98px) {
-  .main-card {
-    padding: 20px 15px;
-    max-width: 95%;
-    margin: 10px;
-  }
+/* ===== HOMEPAGE LANDING CARD ===== */
+.landing-page {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 119, 182, 0.15);
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+  margin: 40px auto;
+}
 
-  .main-card h1 {
-    font-size: 1.5rem;
-  }
+.hero-logo {
+  width: 140px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 119, 182, 0.18);
+}
 
-  .form input {
-    padding: 9px 10px;
-    font-size: 0.9rem;
-  }
+.hero-heading {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #01497c;
+  margin-bottom: 15px;
+}
 
-  .btn {
-    padding: 9px;
-    font-size: 0.95rem;
-  }
+.hero-name {
+  color: #0077b6;
+}
 
-  .navbar-brand {
-    font-size: 1.3rem;
-  }
+.hero-subtext {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 25px;
+}
 
-  .nav-link {
-    font-size: 0.9rem;
-  }
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.home-summary {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #444;
+  border-top: 1px solid #e0f0f4;
+  padding-top: 20px;
+  line-height: 1.6;
 }
