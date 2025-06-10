@@ -1,9 +1,14 @@
-<?php require_once "../inc/config.inc"; ?>
+<?php
+session_start();
+$auth_only_nav = true;
+require_once("../inc/header.inc");
 
+?>
+<?php require_once "../inc/config.inc"; ?>
+<?php require_once ROOT_PATH . "inc/config.inc"; ?>
+ 
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
 <body>
-  <!-- Navbar -->
-  <?php include ROOT_PATH . "inc/header.inc"; ?>
 
   <!-- Signup Form -->
   <main>
@@ -16,7 +21,7 @@
         <input type="password" name="confirm" placeholder="Confirm Password" required />
         <p class="error" id="emailError" style="display: none;">Only southernct.edu emails are allowed.</p>
         <button type="submit" class="btn">Sign Up</button>
-        <p class="form-footer">Already have an account? <a href="login.html">Log In</a></p>
+        <p class="form-footer">Already have an account? <a href="login.php">Log In</a></p>
       </form>
     </div>
   </main>
