@@ -1,10 +1,15 @@
 <?php require_once "../inc/config.inc"; ?>
 
-<?php include ROOT_PATH . "inc/headtags.inc"; ?>
+// TEMPORARY: Dev preview — remove this once login system is active
+if (!isset($_SESSION['email'])) {
+  $_SESSION['first_name'] = "Prabhjot";
+  $_SESSION['email'] = "you@southernct.edu";
+}
+
+require_once(ROOT_PATH . "inc/headtags.inc");
+require_once(ROOT_PATH . "inc/header.inc");
+?>
 <body>
-  <!-- Navbar -->
-  <?php include ROOT_PATH . "inc/header.inc"; ?>
-  <main>
 
   </main>
     <!-- Footer -->
