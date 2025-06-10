@@ -1,7 +1,7 @@
 <?php
 
-if (!defined("BASE_URL")) define("BASE_URL", "/SCSU-CSC400/");
-if (!defined("ROOT_PATH")) define("ROOT_PATH", $_SERVER["DOCUMENT_ROOT"] . "/SCSU-CSC400/");
+define("BASE_URL", "/SCSU-CSC400/");
+define("ROOT_PATH", $_SERVER["DOCUMENT_ROOT"] . "/SCSU-CSC400/");
 
 if (!defined("COMPANY_NAME")) define("COMPANY_NAME", "Southern Connecticut State University");
 if (!defined("COPYYEAR")) define("COPYYEAR", "2025");

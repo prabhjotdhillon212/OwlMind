@@ -1,4 +1,4 @@
-<?php require_once "../inc/config.inc"; ?>
+<?php require_once ROOT_PATH . "inc/config.inc"; ?>
 
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
 <body>
