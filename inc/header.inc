@@ -1,6 +1,10 @@
 <?php
 require_once("config.inc");
-if (!isset($auth_only_nav)) session_start();
+
+// Only start session if not already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <header>

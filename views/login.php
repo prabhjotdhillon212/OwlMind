@@ -1,14 +1,23 @@
 <?php
 session_start();
 $auth_only_nav = true;
+<<<<<<< HEAD
 require_once "../inc/config.inc";
 require_once(ROOT_PATH . "/inc/header.inc");
 ?>
 
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
+=======
+
+require_once("../inc/config.inc"); 
+require_once(ROOT_PATH . "inc/headtags.inc");
+require_once(ROOT_PATH . "inc/header.inc");
+?>
+>>>>>>> 2a59793 (Added all the new pages, dashboard)
 <body>
+
   <main>
-    <div class="main-card">
+    <div class="main-card fade-in">
       <h1>Log In</h1>
       <form action="/login" method="POST" class="form">
         <input type="email" name="email" placeholder="Email" required />
@@ -19,6 +28,5 @@ require_once(ROOT_PATH . "/inc/header.inc");
     </div>
   </main>
 
-  <!-- Footer -->
-  <?php include ROOT_PATH . "inc/footer.inc"; ?>
+  <?php include(ROOT_PATH . "inc/footer.inc"); ?>
 </body>

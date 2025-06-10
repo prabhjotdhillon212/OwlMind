@@ -10,11 +10,14 @@ require_once(ROOT_PATH . "inc/header.inc");
 
   <!-- Signup Form -->
   <main>
-    <div class="main-card">
+    <div class="main-card fade-in">
       <h1>Create an Account</h1>
       <form action="/signup" method="POST" class="form" id="signupForm">
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="email" name="email" placeholder="Email (must end with @southernct.edu)" required />
+        <input type="text" name="first_name" placeholder="First Name" required />
+        <input type="text" name="last_name" placeholder="Last Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number (e.g., 203-555-1234)" required />
+        <input type="email" name="email" placeholder="@southernct.edu)" required />
+        <input type="text" name="student_id" placeholder="Southern Student ID" required />
         <input type="password" name="password" placeholder="Password" required />
         <input type="password" name="confirm" placeholder="Confirm Password" required />
         <p class="error" id="emailError" style="display: none;">Only southernct.edu emails are allowed.</p>
@@ -24,7 +27,7 @@ require_once(ROOT_PATH . "inc/header.inc");
     </div>
   </main>
 
-  <?php include ROOT_PATH . "inc/footer.inc"; ?>
+  <?php include(ROOT_PATH . "inc/footer.inc"); ?>
 
   <!-- JavaScript validation -->
   <script>

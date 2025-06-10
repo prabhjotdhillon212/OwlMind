@@ -215,6 +215,7 @@ footer {
   padding: 18px 0;
   border-top: 1px solid #174250;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: auto;
 }
 
 footer p:hover {
@@ -231,3 +232,215 @@ footer p:hover {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Make sure all buttons align properly */
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Optional wave animation for welcome */
+.wave {
+  display: inline-block;
+  animation: wave 1.4s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ---------------------- ADDITIONS ---------------------- */
+
+/* Fix layout to keep footer at bottom on short pages */
+html {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make sure main can push footer down */
+main {
+  flex: 1;
+}
+
+/* Dashboard Tile Grid for Homepage */
+.dashboard-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.dash-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 2px solid #0077b6;
+  border-radius: 14px;
+  padding: 20px;
+  width: 160px;
+  height: 70px;
+  color: #0077b6;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 119, 182, 0.1);
+  transition: all 0.25s ease;
+}
+
+.dash-tile:hover {
+  background: #0077b6;
+  color: white;
+  transform: translateY(-4px);
+}
+
+/* Optional home summary (quote/status/mood display) */
+.home-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e0f0f4;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Fade up entrance animation for hero box */
+.hero-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.hero-heading {
+  font-size: 2.4rem;
+  color: #01497c;
+  margin-bottom: 10px;
+}
+
+.hero-name {
+  color: #0077b6;
+}
+
+.hero-subtext {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.home-summary {
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 1rem;
+  color: #444;
+  border-top: 1px solid #e0f0f4;
+  line-height: 1.6;
+}
+
+/* Landing card style for index.php hero layout */
+.main-card.landing {
+  padding: 60px 50px;
+  max-width: 600px;
+  animation: fadeInUp 0.6s ease-out;
+  margin-top: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-card.landing:hover {
+  transform: scale(1.02);
+  box-shadow: 0 18px 36px rgba(0, 119, 182, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Slight animation delay for button container */
+.main-card.landing .btn-container {
+  animation: fadeInUp 0.5s ease-out 0.2s;
+  animation-fill-mode: both;
+}
+
+/* Optional enhancement: larger owl logo with glow */
+.welcome-img.hero-logo {
+  width: 150px;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 119, 182, 0.2);
+}
+
+
+/* Improved dashboard container spacing */
+.hero-container {
+  background: white;
+  padding: 60px 60px;
+  border-radius: 24px;
+  box-shadow: 0 10px 50px rgba(0, 119, 182, 0.15);
+  max-width: 850px;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Enhanced dashboard header */
+.hero-heading {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #01497c;
+  margin-bottom: 10px;
+}
+
+.hero-subtext {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+/* Animated grid for dashboard tiles */
+.dashboard-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.dash-tile {
+  background: white;
+  border: 2px solid #0077b6;
+  border-radius: 12px;
+  padding: 20px 30px;
+  width: 180px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0077b6;
+  box-shadow: 0 6px 18px rgba(0, 119, 182, 0.08);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.dash-tile:hover {
+  background: #0077b6;
+  color: white;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 119, 182, 0.25);
+}
+
