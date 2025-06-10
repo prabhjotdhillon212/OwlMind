@@ -1,5 +1,5 @@
 <?php require_once "../inc/config.inc"; ?>
-
+<?php
 // TEMPORARY: Dev preview — remove this once login system is active
 if (!isset($_SESSION['email'])) {
   $_SESSION['first_name'] = "Prabhjot";
