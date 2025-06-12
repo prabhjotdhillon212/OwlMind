@@ -3,9 +3,6 @@ session_start();
 $auth_only_nav = true;
 require_once "../inc/config.inc";
 require_once(ROOT_PATH . "inc/header.inc");
-?>
-
-<?php
 
 include 'db_connection.php';
 

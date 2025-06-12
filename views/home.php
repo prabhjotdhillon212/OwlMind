@@ -4,6 +4,9 @@ require_once "../inc/config.inc";
 
 require_once ROOT_PATH . "inc/headtags.inc";
 require_once ROOT_PATH . "inc/header.inc";
+
+include 'db_connection.php';
+
 ?>
 <body>
 
@@ -25,9 +28,28 @@ require_once ROOT_PATH . "inc/header.inc";
         <!-- Greeting Box -->
         <div class="hero-greeting-box">
             <div class="main-dashboard-section">
-                <h1 class="hero-heading">
-                    Welcome back, <span class="hero-name"><?php echo htmlspecialchars($_SESSION['first_name'] ?? 'Student'); ?></span> <span class="wave">👋</span>
-                </h1>
+                <?php
+                    if (isset($_SESSION['accountID'])) {                
+                        $accountID = $_SESSION['accountID'];
+
+                        try {
+                            $sql = $db->prepare("SELECT fname FROM Student WHERE accountID='$accountID'");
+                            $result = $sql->execute();
+
+                            $user = $result->fetchArray(SQLITE3_ASSOC);
+                            if($user) {
+                                $username = $user['fname'];
+                                echo "<h1 class='hero-heading'>Welcome back, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
+                            } else {
+                                echo "<h1>User not found :( ";
+                            }
+                        } catch (SQLite3Exception $e) {
+                            echo "Error: ". $e->getMessage();
+                        }
+                    } else {
+                        echo "<h1>Uh Oh...</h1>";
+                    }
+                ?>
                 <p class="hero-subtext">It’s a great day to check in with yourself.</p>
                 <div class="dashboard-grid">
                     <a href="<?php echo BASE_URL; ?>views/journal.php" class="dash-tile">Journal</a>

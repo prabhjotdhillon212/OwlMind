@@ -1,33 +1,38 @@
 <?php
+session_start();
 $auth_only_nav = true;
 require_once "../inc/config.inc";
 require_once(ROOT_PATH . "inc/header.inc");
 ?>
 <?php
 
-include 'db_connection.php';
+  include 'db_connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $sql = "SELECT * FROM Account WHERE email='$email' AND password='$password'";
-  $result = $db->query($sql);
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-  if ($result > 0) {
-    $row = $result->fetchArray(SQLITE3_ASSOC);
-    $_SESSION['loggedin'] = true;
-    $_SESSION['email'] = $row['email'];
-    $_SESSION['account_ID'] = $row['accountID'];
+  try {
+    $sql = $db->prepare("SELECT * FROM Account WHERE email='$email' AND password='$password'");
+    $result = $sql->execute();
+    $user = $result->fetchArray(SQLITE3_ASSOC);
 
-    header("Location: home.php");
-  } else {
-    echo "Invalid email or password.";
+    if ($user['email'] == $email && $user['password'] == $password) {
+      $_SESSION['accountID'] = $user['accountID'];
+      $_SESSION['email'] = $user['email'];
+      header("Location: home.php");
+      exit();
+    } else {
+      echo "<h1>Invalid email address or password.</h1>";
+    }
+  } catch (SQLite3Exception $e) {
+    echo "Error: ". $e->getMessage();
+  } finally {
+    if($db) $db->close();
   }
 
   $db->close();
 }
-
-
 
 ?>
 
@@ -36,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <main>
     <div class="main-card fade-in">
       <h1>Log In</h1>
-      <form action="/login" method="POST" class="form" id="loginForm">
+      <form action="" method="POST" class="form" id="loginForm">
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Password" required />
         <button type="submit" class="btn">Log In</button>
