@@ -7,6 +7,28 @@ require_once(ROOT_PATH . "inc/header.inc");
 
 include 'db_connection.php';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $sql = "SELECT * FROM Account WHERE email='$email' AND password='$password'";
+  $result = $db->query($sql);
+
+  if ($result > 0) {
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $_SESSION['loggedin'] = true;
+    $_SESSION['email'] = $row['email'];
+    $_SESSION['account_ID'] = $row['accountID'];
+
+    header("Location: home.php");
+  } else {
+    echo "Invalid email or password.";
+  }
+
+  $db->close();
+}
+
+
+
 ?>
 
 <?php include(ROOT_PATH . "inc/headtags.inc"); ?>

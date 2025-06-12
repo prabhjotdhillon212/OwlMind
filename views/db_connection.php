@@ -12,4 +12,6 @@
     } else {
         // echo "Opened database successfully\n";
     }
+
+    $db->enableExceptions(true);
 ?>

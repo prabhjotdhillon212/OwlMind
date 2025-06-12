@@ -4,6 +4,36 @@ $auth_only_nav = true;
 require_once "../inc/config.inc";
 require_once(ROOT_PATH . "inc/header.inc");
 ?>
+
+<?php
+
+include 'db_connection.php';
+
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $id = $_POST['student_id'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $phone = $_POST['phone'];
+
+    $hashpassword = password_hash($password, PASSWORD_DEFAULT);
+
+  $sql = $db->prepare("INSERT INTO account (email, password) VALUES ('$email', '$password')");
+  $sql->execute();
+  $account_id = $db->lastInsertRowID();
+
+  try {
+    $sql = $db->prepare("INSERT INTO Student (studentID, fname, lname, phoneNum, accountID) VALUES ('$id', '$fname', '$lname', '$phone', '$account_id')");
+    $sql->execute();
+  } catch (SQLite3Exception $e) {
+    echo "Error: " . $e->getMessage();
+    echo "Error Code: " . $e->getCode();
+  }
+    $db->close();
+}
+
+?>
  
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
 <body>
@@ -12,11 +42,11 @@ require_once(ROOT_PATH . "inc/header.inc");
   <main>
     <div class="main-card fade-in">
       <h1>Create an Account</h1>
-      <form action="/signup" method="POST" class="form" id="signupForm">
-        <input type="text" name="first_name" placeholder="First Name" required />
-        <input type="text" name="last_name" placeholder="Last Name" required />
+      <form action="" method="POST" class="form" id="signupForm">
+        <input type="text" name="fname" placeholder="First Name" required />
+        <input type="text" name="lname" placeholder="Last Name" required />
         <input type="tel" name="phone" placeholder="Phone Number (e.g., 203-555-1234)" required />
-        <input type="email" name="email" placeholder="@southernct.edu)" required />
+        <input type="email" name="email" placeholder="abc123@southernct.edu)" required />
         <input type="text" name="student_id" placeholder="Southern Student ID" required />
         <input type="password" name="password" placeholder="Password" required />
         <input type="password" name="confirm" placeholder="Confirm Password" required />

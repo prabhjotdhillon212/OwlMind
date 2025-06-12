@@ -2,11 +2,6 @@
 session_start();
 require_once "../inc/config.inc";
 
-if (!isset($_SESSION['email'])) {
-    $_SESSION['first_name'] = "Prabhjot";
-    $_SESSION['email'] = "you@southernct.edu";
-}
-
 require_once ROOT_PATH . "inc/headtags.inc";
 require_once ROOT_PATH . "inc/header.inc";
 ?>
