@@ -16,13 +16,27 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $hashpassword = password_hash($password, PASSWORD_DEFAULT);
 
-  $sql = $db->prepare("INSERT INTO account (email, password) VALUES ('$email', '$password')");
+  $sql = $db->prepare("INSERT INTO account (email, password) VALUES ('$email', '$hashpassword')");
   $sql->execute();
+
+  // Get $account_id to set session variable:
   $account_id = $db->lastInsertRowID();
 
   try {
     $sql = $db->prepare("INSERT INTO Student (studentID, fname, lname, phoneNum, accountID) VALUES ('$id', '$fname', '$lname', '$phone', '$account_id')");
     $sql->execute();
+
+    // Set $_SESSION['accountID']:
+    $_SESSION['accountID'] = $account_id;
+
+    // Set $_SESSION['email']: 
+    $sql = $db->prepare("SELECT * FROM Account WHERE email='$email'");
+    $result = $sql->execute();
+    $email = $result->fetchArray(SQLITE3_ASSOC);
+    $_SESSION['email'] = $email;
+
+    header("Location: home.php");
+    exit();
   } catch (SQLite3Exception $e) {
     echo "Error: " . $e->getMessage();
     echo "Error Code: " . $e->getCode();

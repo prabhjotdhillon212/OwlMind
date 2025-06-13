@@ -39,15 +39,15 @@ include 'db_connection.php';
                             $user = $result->fetchArray(SQLITE3_ASSOC);
                             if($user) {
                                 $username = $user['fname'];
-                                echo "<h1 class='hero-heading'>Welcome back, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
+                                echo "<h1 class='hero-heading'>Welcome, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
                             } else {
-                                echo "<h1>User not found :( ";
+                                echo "<h1 class='hero-heading'>User not found :( ";
                             }
                         } catch (SQLite3Exception $e) {
                             echo "Error: ". $e->getMessage();
                         }
                     } else {
-                        echo "<h1>Uh Oh...</h1>";
+                        echo "<h1 class='hero-heading'  >Uh Oh...</h1>";
                     }
                 ?>
                 <p class="hero-subtext">It’s a great day to check in with yourself.</p>
