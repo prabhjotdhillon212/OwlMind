@@ -1,7 +1,7 @@
 <?php 
 $auth_only_nav = true;
 include 'inc/config.inc'; 
-include 'inc/headtags.inc'; 
+include 'inc/headtags.inc';
 ?>
 <body>
   <!-- Navbar -->
