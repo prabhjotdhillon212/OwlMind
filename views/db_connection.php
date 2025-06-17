@@ -12,6 +12,7 @@
     } else {
         // echo "Opened database successfully\n";
     }
-
-    $db->enableExceptions(true);
+    
+    // toggle to suppress errors / warnings
+    error_reporting(0);
 ?>
