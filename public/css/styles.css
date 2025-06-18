@@ -274,29 +274,35 @@ footer p:hover {
 }
 
 .meditating-person {
-    position: relative; /* Crucial for positioning the splash */
-    flex-shrink: 0; /* Prevents this section from shrinking */
+    position: relative; 
+    flex-shrink: 0; 
     text-align: center;
     padding-top: 0;
-    overflow: hidden; /* Ensures splash doesn't bleed too far */
-    border-radius: 50%; /* If your image has a circular background, helps with overflow */
+    overflow: hidden; 
+    border-radius: 50%;
 }
 
-/* New CSS for the splash behind the meditating person */
 .meditating-person::before {
-    content: '';
-    position: absolute;
-    /* Adjust these values to position the splash correctly */
-    top: -50px; /* Moves it up */
-    left: -50px; /* Moves it left */
-    width: 150%; /* Make it larger to cover the area */
-    height: 150%; /* Make it larger */
-    background-image: url('../public/images/meditating_splash.png'); /* **REMEMBER TO REPLACE WITH YOUR ACTUAL IMAGE PATH** */
-    background-size: cover; /* Covers the area */
-    background-repeat: no-repeat;
-    z-index: -1; /* Send it behind the content */
-    opacity: 0.7; /* Adjust transparency */
-    transform: rotate(5deg); /* Optional slight rotation */
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  background: #dcefe8; 
+  border-radius: 55% 45% 50% 60% / 60% 50% 55% 40%; 
+  z-index: -1;
+  opacity: 0.6;
+  filter: blur(2px); 
+  transform: rotate(5deg); 
+}
+@keyframes floatBlob {
+  0%, 100% { transform: rotate(3deg) scale(1); }
+  50% { transform: rotate(-3deg) scale(1.02); }
+}
+
+.meditating-person::before {
+  animation: floatBlob 8s ease-in-out infinite;
 }
 
 
@@ -588,18 +594,21 @@ footer p:hover {
 }
 
 .meditating-person::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: -60px;
-  width: 150%;
-  height: 150%;
-  background-image: url('../assets/meditating_splash.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 0.7;
-  transform: rotate(5deg);
+  top: -70px;
+  left: -70px;
+  width: 350px;
+  height: 350px;
+  background: #dcefe8;
+  opacity: 0.75;
+  filter: blur(4px);
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: scale(1) rotate(3deg); }
+  50% { transform: scale(1.05) rotate(-2deg); }
+}
+.meditating-person::before {
+  animation: floatBlob 10s ease-in-out infinite;
 }
 
 .meditating-img {

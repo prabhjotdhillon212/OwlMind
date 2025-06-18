@@ -14,9 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $lname = $_POST['lname'];
     $phone = $_POST['phone'];
 
-    $hashpassword = password_hash($password, PASSWORD_DEFAULT);
 
-  $sql = $db->prepare("INSERT INTO account (email, password) VALUES ('$email', '$hashpassword')");
+  $sql = $db->prepare("INSERT INTO account (email, password) VALUES ('$email', '$password')");
   $sql->execute();
 
   // Get $account_id to set session variable:
