@@ -53,8 +53,9 @@ include 'db_connection.php';
                 <p class="hero-subtext">It’s a great day to check in with yourself.</p>
                 <div class="dashboard-grid">
                     <a href="<?php echo BASE_URL; ?>views/journal.php" class="dash-tile">Journal</a>
-                    <a href="<?php echo BASE_URL; ?>views/mood.php" class="dash-tile">Log Mood</a>
+                    <a href="<?php echo BASE_URL; ?>views/mood.php" class="dash-tile">Mood Recorder</a>
                     <a href="<?php echo BASE_URL; ?>views/appointment.php" class="dash-tile">Appointment</a>
+                    <a href="<?php echo BASE_URL; ?>views/profile.php" class="dash-tile">My Profile</a>
                 </div>
             </div>
         </div>
