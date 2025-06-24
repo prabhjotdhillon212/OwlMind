@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $auth_only_nav = true;
   require_once "../inc/config.inc";
 
   require_once ROOT_PATH . "inc/headtags.inc";

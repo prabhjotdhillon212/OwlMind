@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_data']['id']) || empty($_SESSION['user_data']['id'])) {
-    header('Location: login.php'); // Redirect to login page
-    exit();
-}
+$auth_only_nav = true;
 require_once "../inc/config.inc";
 
 require_once ROOT_PATH . "inc/headtags.inc";
