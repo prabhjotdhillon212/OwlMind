@@ -62,7 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
       $sql = $db->prepare("SELECT * FROM Account WHERE email='$email'");
       $result = $sql->execute();
       $email = $result->fetchArray(SQLITE3_ASSOC);
-      $_SESSION['email'] = $email;
+      $_SESSION['user_data'] = array(
+        'id' => $id,
+        'fname' => $fname,
+        'lname' => $lname,
+        'phoneNum' => $phone,
+        'account_id' => $account_id,
+        'email' => $email
+      );
 
       header("Location: home.php");
       exit();

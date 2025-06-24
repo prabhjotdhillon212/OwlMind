@@ -1,9 +1,18 @@
-<?php require_once "../inc/config.inc"; ?>
+<?php
+  session_start();
+  $auth_only_nav = true;
+  require_once "../inc/config.inc";
+
+  require_once ROOT_PATH . "inc/headtags.inc";
+  require_once ROOT_PATH . "inc/header.inc";
+?>
+<?php 
+  include 'db_connection.php';
+?>
 
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
 <body>
   <!-- Navbar -->
-  <?php include ROOT_PATH . "inc/header.inc"; ?>
   <main>
     <div class="main-card fade-in">
       <a href="reset_pass.php">Reset Password</a>

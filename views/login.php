@@ -20,8 +20,14 @@ ini_set('display_errors', 0);
     
     // Set $_SESSION variables:
     if ($user['email'] == $email && $user['password'] == $password) {
-      $_SESSION['accountID'] = $user['accountID'];
-      $_SESSION['email'] = $user['email'];
+      $_SESSION['user_data'] = array(
+        'id' => $id,
+        'fname' => $fname,
+        'lname' => $lname,
+        'phoneNum' => $phone,
+        'account_id' => $account_id,
+        'email' => $email
+      );
       header("Location: home.php");
       exit();
     } else {

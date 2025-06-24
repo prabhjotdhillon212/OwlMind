@@ -1,6 +1,9 @@
 <?php
 session_start();
-$auth_only_nav = true;
+if (!isset($_SESSION['user_data']['id']) || empty($_SESSION['user_data']['id'])) {
+    header('Location: login.php'); // Redirect to login page
+    exit();
+}
 require_once "../inc/config.inc";
 
 require_once ROOT_PATH . "inc/headtags.inc";
@@ -32,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $studentidget->execute();
     $emailget = $db->prepare("SELECT email FROM Account WHERE email='$email'");
     $emailget->execute();
-    $qwerty = $db->prepare("SELECT studentID, email FROM Student INNER JOIN Account ON Student.accountID = Account.accountID WHERE Account.email = :email AND Student.studentID = :student_id");
+    $qwerty = $db->prepare("SELECT studentID, email FROM Student INNER JOIN Account ON Student.accountID = Account.accountID 
+        WHERE Account.email = :email AND Student.studentID = :student_id");
     $qwerty->bindValue(':email', $email, SQLITE3_TEXT);
     $qwerty->bindValue(':student_id', $student_id, SQLITE3_TEXT);
     $result = $qwerty->execute();
