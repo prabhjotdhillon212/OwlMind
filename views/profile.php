@@ -20,52 +20,52 @@
 
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
-  $action = $_POST["action"] ?? '';
+    $action = $_POST["action"] ?? '';
 
-  switch($action) {
-    case 'fname':
-      $fname = $_POST["fname"] ?? '';
+    switch($action) {
+      case 'fname':
+        $fname = $_POST["fname"] ?? '';
 
-      $updatefname = $db->prepare("UPDATE Student SET fname=:fname WHERE studentID=$student_id");
-      $updatefname->bindParam(':fname', $fname, SQLITE3_TEXT);
-      $entrySaved = $updatefname->execute();
-      $saveError = !$entrySaved;
-      $_SESSION['fname'] = $fname;
-      //header("Location: profile.php");
-      break;
-
-    case 'lname':
-      $lname = $_POST["lname"] ?? '';
-        
-      $updatelname = $db->prepare("UPDATE Student SET lname=:lname WHERE studentID=$student_id");
-      $updatelname->bindParam(':lname', $lname, SQLITE3_TEXT);
-      $updatelname->execute();
-      $entrySaved = $updatelname->execute();
-      $saveError = !$entrySaved;
-      $_SESSION['lname'] = $lname;
-      //header("Location: profile.php");
-      break;
-      
-    case 'phoneNum':
-      $phoneNum = $_POST["phoneNum"] ?? '';
-
-      if (strlen($phoneNum) != 10 || !(is_numeric($phoneNum))) {
-        $err = "Phone numbers must be 10 digits. Enter numbers only.";
-      } else {
-        $updatephone = $db->prepare("UPDATE Student SET phoneNum=:phoneNum WHERE studentID=$student_id");
-        $updatephone->bindParam(':phoneNum', $phoneNum, SQLITE3_TEXT);
-        $updatephone->execute();
-        $entrySaved = $updatephone->execute();
+        $updatefname = $db->prepare("UPDATE Student SET fname=:fname WHERE studentID=$student_id");
+        $updatefname->bindParam(':fname', $fname, SQLITE3_TEXT);
+        $entrySaved = $updatefname->execute();
         $saveError = !$entrySaved;
-        $_SESSION['phoneNum'] = $phoneNum;
+        $_SESSION['fname'] = $fname;
         //header("Location: profile.php");
         break;
-      }
-    default:
-      // echo "Invalid action.";
-    } 
+
+      case 'lname':
+        $lname = $_POST["lname"] ?? '';
+          
+        $updatelname = $db->prepare("UPDATE Student SET lname=:lname WHERE studentID=$student_id");
+        $updatelname->bindParam(':lname', $lname, SQLITE3_TEXT);
+        $updatelname->execute();
+        $entrySaved = $updatelname->execute();
+        $saveError = !$entrySaved;
+        $_SESSION['lname'] = $lname;
+        //header("Location: profile.php");
+        break;
+        
+      case 'phoneNum':
+        $phoneNum = $_POST["phoneNum"] ?? '';
+
+        if (strlen($phoneNum) != 10 || !(is_numeric($phoneNum))) {
+          $err = "Phone numbers must be 10 digits. Enter numbers only.";
+        } else {
+          $updatephone = $db->prepare("UPDATE Student SET phoneNum=:phoneNum WHERE studentID=$student_id");
+          $updatephone->bindParam(':phoneNum', $phoneNum, SQLITE3_TEXT);
+          $updatephone->execute();
+          $entrySaved = $updatephone->execute();
+          $saveError = !$entrySaved;
+          $_SESSION['phoneNum'] = $phoneNum;
+          //header("Location: profile.php");
+          break;
+        }
+      default:
+        // echo "Invalid action.";
+      } 
   }
-  
+    
   if ($entrySaved == true) {
     $message = "✅ Entry saved!";
     $class = 'text-success';
@@ -89,9 +89,7 @@
         if (isset($err)) {
           echo "<p class='fw-semibold text-danger'>" . $err . "</p>";
         }
-      ?>
-
-      <?php
+        
         if (isset($message)) {
           echo "<p class='fw-semibold $class'>" . $message . "</p>";
         }
