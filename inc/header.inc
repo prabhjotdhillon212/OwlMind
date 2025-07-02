@@ -25,7 +25,6 @@ if (session_status() === PHP_SESSION_NONE) {
             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/login.php">Log In</a></li>
           <?php elseif (isset($_SESSION['email'])): ?>
             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/home.php"><?php echo NAV_ITEM_ONE; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/appointment.php"><?php echo NAV_ITEM_TWO; ?></a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/journal.php"><?php echo NAV_ITEM_THREE; ?></a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/mood.php"><?php echo NAV_ITEM_FOUR; ?></a></li>
             <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/resources.php"><?php echo NAV_ITEM_FIVE; ?></a></li>

@@ -8,51 +8,53 @@
 <?php 
   include 'db_connection.php';
 
+  if (!isset($_SESSION['accountID'])) {
+    header("Location: login.php");
+    exit();
+  }
+
   $student_id = $_SESSION['studentID'];
 
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
-    $action = $_POST["action"] ?? '';
+  $action = $_POST["action"] ?? '';
 
-    switch($action) {
-      case 'fname':
+  switch($action) {
+    case 'fname':
+      $fname = $_POST["fname"] ?? '';
 
-        $fname = $_POST["fname"] ?? '';
+      $updatefname = $db->prepare("UPDATE Student SET fname=:fname WHERE studentID=$student_id");
+      $updatefname->bindParam(':fname', $fname, SQLITE3_TEXT);
+      $updatefname->execute();        
+      header("Location: profile.php");
+      $_SESSION['fname'] = $fname;
+      break;
 
-        $updatefname = $db->prepare("UPDATE Student SET fname=:fname WHERE studentID=$student_id");
-        $updatefname->bindParam(':fname', $fname, SQLITE3_TEXT);
-        $updatefname->execute();
-        header("Location: profile.php");
-        $_SESSION['fname'] = $fname;
-        break;
-
-      case 'lname':
-
-        $lname = $_POST["lname"] ?? '';
+    case 'lname':
+      $lname = $_POST["lname"] ?? '';
         
-        $updatelname = $db->prepare("UPDATE Student SET lname=:lname WHERE studentID=$student_id");
-        $updatelname->bindParam(':lname', $lname, SQLITE3_TEXT);
-        $updatelname->execute();
-        header("Location: profile.php");
-        $_SESSION['lname'] = $lname;
-        break;
+      $updatelname = $db->prepare("UPDATE Student SET lname=:lname WHERE studentID=$student_id");
+      $updatelname->bindParam(':lname', $lname, SQLITE3_TEXT);
+      $updatelname->execute();
+      header("Location: profile.php");
+      $_SESSION['lname'] = $lname;
+      break;
       
-      case 'phoneNum':
+    case 'phoneNum':
+      $phoneNum = $_POST["phoneNum"] ?? '';
 
-        $phoneNum = $_POST["phoneNum"] ?? '';
-
-        if (strlen($phoneNum) != 10 || !(is_numeric($phoneNum))) {
-          $err = "Phone numbers must be 10 digits. Enter numbers only.";
-        } else {
-          $updatephone = $db->prepare("UPDATE Student SET phoneNum=:phoneNum WHERE studentID=$student_id");
-          $updatephone->bindParam(':phoneNum', $phoneNum, SQLITE3_TEXT);
-          $updatephone->execute();
-          header("Location: profile.php");
-          $_SESSION['phoneNum'] = $phoneNum;
-          break;
-        }
-      default:
-        echo "Invalid action.";
+      if (strlen($phoneNum) != 10 || !(is_numeric($phoneNum))) {
+        $err = "Phone numbers must be 10 digits. Enter numbers only.";
+      } else {
+        $updatephone = $db->prepare("UPDATE Student SET phoneNum=:phoneNum WHERE studentID=$student_id");
+        $updatephone->bindParam(':phoneNum', $phoneNum, SQLITE3_TEXT);
+        $updatephone->execute();
+        $_SESSION['phoneNum'] = $phoneNum;
+        header("Location: profile.php");
+        break;
+      }
+    default:
+      // echo "Invalid action.";
     } 
   }
   
@@ -69,7 +71,12 @@
         if (isset($err)) {
           echo "<div style='color: red'>" . $err . "</div>";
         }
+
+        if (isset($message)) {
+          echo "<p class='text-success fw-semibold'>$message</p>";
+        }
       ?>
+
       <form class="form">
         <fieldset class="field">
           <label for="fname">First Name:</label>
@@ -96,6 +103,7 @@
   <?php include ROOT_PATH . "inc/footer.inc"; ?>
 
   <script>
+    // dynamic form when edit buttons are clicked:
     const editbutton = document.querySelectorAll('button');
 
     const newForm = document.createElement("form");
