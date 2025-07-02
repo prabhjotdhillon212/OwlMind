@@ -18,18 +18,18 @@
       <form class="form">
         <fieldset class="field">
           <label for="fname">First Name:</label>
-          <input type="text" name="fname" value="<?php echo $_SESSION['fname']; ?>" />
-          <button class="edit-button btn" type="button">Edit</button>
+          <input type="text" value="<?php echo $_SESSION['fname']; ?>" />
+          <button class="edit-button btn" id="button-fname" type="button">Edit</button>
         </fieldset>
         <fieldset class="field">
           <label for="lname">Last Name:</label>
-          <input type="text" id="lname" value="<?php echo $_SESSION['lname']; ?>" />
-          <button class="edit-button btn" id="lname" type="button">Edit</button>
+          <input type="text" value="<?php echo $_SESSION['lname']; ?>" />
+          <button class="edit-button btn" id="button-lname" type="button">Edit</button>
         </fieldset>
         <fieldset class="field">
           <label for="phoneNum">Phone Number:</label>
-          <input class="input" type="text" id="phoneNum" value="<?php echo $_SESSION['phoneNum']; ?>" />
-          <button class="edit-button btn" id="phoneNum" type="button">Edit</button>
+          <input class="input" type="text" value="<?php echo $_SESSION['phoneNum']; ?>" />
+          <button class="edit-button btn" id="button-phoneNum" type="button">Edit</button>
         </fieldset>
         <fieldset class="field">
           <label for="emailbox">Email Address:</label>
@@ -48,18 +48,33 @@
     <!-- Footer -->
   <?php include ROOT_PATH . "inc/footer.inc"; ?>
   <script>
-    const editbutton = document.getElementsByClassName("edit-button btn");
-    const parentelement = document.getElementsByClassName("field");
-    // const inputform = document.getElementsByClassName("input");
+
+    const editbutton = document.getElementsByClassName("edit-button");
 
     const newForm = document.createElement("form");
     newForm.setAttribute('action', '');
     newForm.setAttribute('method', 'POST');
     newForm.setAttribute('class', 'form');
+    newForm.style.marginTop = '5%';
 
     const newInput = document.createElement('input');
     newInput.setAttribute('type', 'text');
-
+    
+    for (let z = 0; z < editbutton.length; z++) {
+      if (editbutton[z].id === 'button-fname') {
+        newInput.setAttribute('name', 'fname');
+        newInput.setAttribute('placeholder', 'Enter your new first name');
+      } else if (editbutton[z].id === 'button-lname') {
+        newInput.setAttribute('name', 'lname');
+        newInput.setAttribute('placeholder', 'Enter your new last name');
+      } else if (editbutton[z].id === 'button-phoneNum') {
+        newInput.setAttribute('name', 'phoneNum');
+        newInput.setAttribute('placeholder', 'Enter your new phone number');
+      } else {
+        newInput.setAttribute = ('name', 'name');
+      }
+    };
+    
     const newSubmitButton = document.createElement('button');
     newSubmitButton.setAttribute('type', 'submit');
     newSubmitButton.setAttribute('class', 'btn');
@@ -71,9 +86,7 @@
 
     for (let i = 0; i < editbutton.length; i++) {
       editbutton[i].addEventListener('click', function() {
-        for (let j = 0; j < parentelement.length; j++) {
-          parentelement[j].appendChild(newForm);
-        };
+        this.after(newForm);
       });
     };
   </script>
