@@ -13,6 +13,9 @@
     exit();
   }
 
+  $entrySaved = false;
+  $saveError = false;
+
   $student_id = $_SESSION['studentID'];
 
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -25,9 +28,10 @@
 
       $updatefname = $db->prepare("UPDATE Student SET fname=:fname WHERE studentID=$student_id");
       $updatefname->bindParam(':fname', $fname, SQLITE3_TEXT);
-      $updatefname->execute();        
-      header("Location: profile.php");
+      $entrySaved = $updatefname->execute();
+      $saveError = !$entrySaved;
       $_SESSION['fname'] = $fname;
+      //header("Location: profile.php");
       break;
 
     case 'lname':
@@ -36,8 +40,10 @@
       $updatelname = $db->prepare("UPDATE Student SET lname=:lname WHERE studentID=$student_id");
       $updatelname->bindParam(':lname', $lname, SQLITE3_TEXT);
       $updatelname->execute();
-      header("Location: profile.php");
+      $entrySaved = $updatelname->execute();
+      $saveError = !$entrySaved;
       $_SESSION['lname'] = $lname;
+      //header("Location: profile.php");
       break;
       
     case 'phoneNum':
@@ -49,8 +55,10 @@
         $updatephone = $db->prepare("UPDATE Student SET phoneNum=:phoneNum WHERE studentID=$student_id");
         $updatephone->bindParam(':phoneNum', $phoneNum, SQLITE3_TEXT);
         $updatephone->execute();
+        $entrySaved = $updatephone->execute();
+        $saveError = !$entrySaved;
         $_SESSION['phoneNum'] = $phoneNum;
-        header("Location: profile.php");
+        //header("Location: profile.php");
         break;
       }
     default:
@@ -58,6 +66,16 @@
     } 
   }
   
+  if ($entrySaved == true) {
+    $message = "✅ Entry saved!";
+    $class = 'text-success';
+  } else if ($saveError == true) {
+    $message = "❌ Something went wrong. Please try again.";
+    $class = 'text-danger';
+  } else {
+    // do nothing
+  }
+
   $db->close();
 ?>
 
@@ -69,11 +87,13 @@
       <h1 class="hero-heading" style="text-align: center;"><?php echo $_SESSION['fname']; ?>'s Profile</h1>
       <?php
         if (isset($err)) {
-          echo "<div style='color: red'>" . $err . "</div>";
+          echo "<p class='fw-semibold text-danger'>" . $err . "</p>";
         }
+      ?>
 
+      <?php
         if (isset($message)) {
-          echo "<p class='text-success fw-semibold'>$message</p>";
+          echo "<p class='fw-semibold $class'>" . $message . "</p>";
         }
       ?>
 

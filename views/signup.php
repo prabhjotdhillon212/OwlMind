@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
       <?php
         // if incorrect entries, throw error message:
         if (isset($err)) {
-          echo "<div style='color: red'>" . $err . "</div>";
+          echo "<p class='fw-semibold text-danger'>" . $err . "</p>";
         }
       ?>
       <form action="" method="POST" class="form" id="signupForm">
