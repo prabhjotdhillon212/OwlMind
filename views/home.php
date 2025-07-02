@@ -6,6 +6,7 @@ require_once ROOT_PATH . "inc/headtags.inc";
 require_once ROOT_PATH . "inc/header.inc";
 
 include 'db_connection.php';
+
 ?>
 <body>
 
@@ -14,6 +15,7 @@ include 'db_connection.php';
     <!-- Global Splashes -->
     <div class="site-splashes">
         <img src="<?php echo BASE_URL; ?>public/images/splash-blue.png" class="splash splash-top-left" alt="blue splash" />
+        <!-- <img src="<?php echo BASE_URL; ?>public/images/splash-blue.png" class="splash splash-bottom-right" alt="yellow splash" /> -->
     </div>
 
     <section class="hero-container fade-in">
@@ -39,20 +41,19 @@ include 'db_connection.php';
                                 $username = $user['fname'];
                                 echo "<h1 class='hero-heading'>Welcome, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
                             } else {
-                                echo "<h1 class='hero-heading'>User not found :(</h1>";
+                                echo "<h1 class='hero-heading'>User not found :( ";
                             }
                         } catch (SQLite3Exception $e) {
                             echo "Error: ". $e->getMessage();
                         }
                     } else {
-                        echo "<h1 class='hero-heading'>Uh Oh...</h1>";
+                        echo "<h1 class='hero-heading'  >Uh Oh...</h1>";
                     }
                 ?>
                 <p class="hero-subtext">It’s a great day to check in with yourself.</p>
                 <div class="dashboard-grid">
                     <a href="<?php echo BASE_URL; ?>views/journal.php" class="dash-tile">Journal</a>
                     <a href="<?php echo BASE_URL; ?>views/mood.php" class="dash-tile">Log Mood</a>
-                    <a href="<?php echo BASE_URL; ?>views/appointment.php" class="dash-tile">Appointment</a>
                 </div>
             </div>
         </div>
@@ -60,35 +61,17 @@ include 'db_connection.php';
         <!-- Dashboard Cards -->
         <div class="home-extras">
             <div class="home-card tip-card">
-                <h3>💡 Daily Mental Health Tip</h3>
-                <p>"Take a deep breath. You’re stronger than you think."</p>
+                <h3>Daily Mental Health Tip</h3>
+                <p>Take a deep breath. You’re stronger than you think.</p>
             </div>
 
             <div class="home-card mood-trend">
-                <h3>📈 Mood Trend</h3>
-                <p>Last 7 days mood check (placeholder)</p>
-                <img class="mood-graph" src="<?php echo BASE_URL; ?>assets/mood-graph-placeholder.png" alt="Mood graph chart preview" />
+                <h3> Mood Trend</h3>
+                <p>Last 7 days mood check</p>
             </div>
 
             <div class="home-card journal-preview">
-                <h3>📔 Your Recent Journal Entries</h3>
-                <ul>
-                    <?php
-                    if (isset($_SESSION['journal_entries']) && count($_SESSION['journal_entries']) > 0) {
-                        $recent = array_slice($_SESSION['journal_entries'], 0, 3); // Show latest 3
-                        foreach ($recent as $entry) {
-                            echo "<li>" . htmlspecialchars($entry['entry']) . "</li>";
-                        }
-                    } else {
-                        echo "<li>No journal entries yet.</li>";
-                    }
-                    ?>
-                </ul>
-            </div>
-
-            <div class="home-card appointment-card yellow-splash">
-                <h3>🗓️ Next Appointment</h3>
-                <p>Thursday @ 2:00 PM</p>
+                <h3>Your Recent Journal Entries</h3>
             </div>
         </div>
 
