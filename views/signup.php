@@ -53,19 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
                 <p class="text-danger fw-semibold" id="emailError" style="display: none;">Only southernct.edu emails are
                     allowed.</p>
-
-                <!-- Terms of Service Acknowledgement -->
-                <div class="form-check text-start">
-                    <input class="form-check-input" type="checkbox" id="tosCheckbox" required />
-                    <label class="form-check-label small" for="tosCheckbox">
-                        I acknowledge that this app is <strong>not monitored in real-time</strong>, is <strong>not a
-                            replacement for professional treatment</strong>, and does <strong>not provide emergency
-                            mental health support</strong>.
-                        If I am in crisis or need immediate help, I will contact <a href="tel:988"
-                            class="fw-semibold">988 (Suicide & Crisis Lifeline)</a>.
-                    </label>
-                </div>
-
                 <button type="submit" class="btn btn-custom">Sign Up</button>
                 <p class="mt-3 text-muted">Already have an account? <a href="login.php" class="fw-semibold"
                         style="color: #0077b6;">Log In</a></p>
