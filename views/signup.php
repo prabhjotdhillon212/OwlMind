@@ -36,41 +36,58 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 ?>
 
 <?php include ROOT_PATH . "inc/headtags.inc"; ?>
+
 <body>
-  <main class="d-flex justify-content-center align-items-center p-4" style="min-height: 100vh;">
-    <div class="card p-4 shadow-lg fade-in text-center" style="max-width: 400px; width: 100%; border-radius: 12px;">
-      <h1 class="fw-bold mb-4" style="color: #01497c;">Create an Account</h1>
-      <form action="" method="POST" class="d-flex flex-column gap-3" id="signupForm">
-        <input type="text" name="fname" class="form-control" placeholder="First Name" required />
-        <input type="text" name="lname" class="form-control" placeholder="Last Name" required />
-        <input type="tel" name="phone" class="form-control" placeholder="Phone Number (e.g., 203-555-1234)" required />
-        <input type="email" name="email" class="form-control" placeholder="abc123@southernct.edu" required />
-        <input type="text" name="student_id" class="form-control" placeholder="Southern Student ID" required />
-        <input type="password" name="password" class="form-control" placeholder="Password" required />
-        <input type="password" name="confirm" class="form-control" placeholder="Confirm Password" required />
-        <p class="text-danger fw-semibold" id="emailError" style="display: none;">Only southernct.edu emails are allowed.</p>
-        <button type="submit" class="btn btn-custom">Sign Up</button>
-        <p class="mt-3 text-muted">Already have an account? <a href="login.php" class="fw-semibold" style="color: #0077b6;">Log In</a></p>
-      </form>
-    </div>
-  </main>
+    <main class="d-flex justify-content-center align-items-center p-4" style="min-height: 100vh;">
+        <div class="card p-4 shadow-lg fade-in text-center" style="max-width: 400px; width: 100%; border-radius: 12px;">
+            <h1 class="fw-bold mb-4" style="color: #01497c;">Create an Account</h1>
+            <form action="" method="POST" class="d-flex flex-column gap-3" id="signupForm">
+                <input type="text" name="fname" class="form-control" placeholder="First Name" required />
+                <input type="text" name="lname" class="form-control" placeholder="Last Name" required />
+                <input type="tel" name="phone" class="form-control" placeholder="Phone Number (e.g., 203-555-1234)"
+                    required />
+                <input type="email" name="email" class="form-control" placeholder="abc123@southernct.edu" required />
+                <input type="text" name="student_id" class="form-control" placeholder="Southern Student ID" required />
+                <input type="password" name="password" class="form-control" placeholder="Password" required />
+                <input type="password" name="confirm" class="form-control" placeholder="Confirm Password" required />
 
-  <?php include(ROOT_PATH . "inc/footer.inc"); ?>
+                <p class="text-danger fw-semibold" id="emailError" style="display: none;">Only southernct.edu emails are
+                    allowed.</p>
 
-  <script>
+                <!-- Terms of Service Acknowledgement -->
+                <div class="form-check text-start">
+                    <input class="form-check-input" type="checkbox" id="tosCheckbox" required />
+                    <label class="form-check-label small" for="tosCheckbox">
+                        I acknowledge that this app is <strong>not monitored in real-time</strong>, is <strong>not a
+                            replacement for professional treatment</strong>, and does <strong>not provide emergency
+                            mental health support</strong>.
+                        If I am in crisis or need immediate help, I will contact <a href="tel:988"
+                            class="fw-semibold">988 (Suicide & Crisis Lifeline)</a>.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-custom">Sign Up</button>
+                <p class="mt-3 text-muted">Already have an account? <a href="login.php" class="fw-semibold"
+                        style="color: #0077b6;">Log In</a></p>
+            </form>
+        </div>
+    </main>
+
+    <?php include(ROOT_PATH . "inc/footer.inc"); ?>
+
+    <script>
     const form = document.getElementById("signupForm");
     const emailInput = form.querySelector("input[name='email']");
     const errorMsg = document.getElementById("emailError");
 
     form.addEventListener("submit", (e) => {
-      const email = emailInput.value.trim().toLowerCase();
-      if (!email.endsWith("@southernct.edu")) {
-        e.preventDefault();
-        errorMsg.style.display = "block";
-      } else {
-        errorMsg.style.display = "none";
-      }
+        const email = emailInput.value.trim().toLowerCase();
+        if (!email.endsWith("@southernct.edu")) {
+            e.preventDefault();
+            errorMsg.style.display = "block";
+        } else {
+            errorMsg.style.display = "none";
+        }
     });
-  </script>
+    </script>
 </body>
-s

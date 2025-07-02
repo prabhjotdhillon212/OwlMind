@@ -185,7 +185,7 @@ footer p:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== HOMEPAGE LANDING CARD (for index.php, if applicable) ===== */
+/* ===== HOMEPAGE LANDING CARD (for index.php) ===== */
 .main-card.landing-page {
     background: rgba(255, 255, 255, 0.96);
     padding: 60px 40px;
@@ -285,56 +285,52 @@ footer p:hover {
 }
 
 .meditating-person {
-    position: relative; /* Crucial for positioning the splash */
+    position: relative; /* positioning the splash */
     flex-shrink: 0; /* Prevents this section from shrinking */
     text-align: center;
     padding-top: 0;
-    overflow: hidden; /* Ensures splash doesn't bleed too far */
-    border-radius: 50%; /* If your image has a circular background, helps with overflow */
+    overflow: hidden; 
+    border-radius: 50%; 
 }
 
-/* New CSS for the splash behind the meditating person */
+/* New CSS meditating person */
 .meditating-person::before {
     content: '';
     position: absolute;
-    /* Adjust these values to position the splash correctly */
-    top: -50px; /* Moves it up */
-    left: -50px; /* Moves it left */
-    width: 150%; /* Make it larger to cover the area */
-    height: 150%; /* Make it larger */
-    background-image: url('../public/images/meditating_splash.png'); /* **REMEMBER TO REPLACE WITH YOUR ACTUAL IMAGE PATH** */
-    background-size: cover; /* Covers the area */
+    top: -50px; 
+    left: -50px; 
+    width: 150%; 
+    height: 150%; 
+    background-image: url('../public/images/meditating_splash.png');
+    background-size: cover; 
     background-repeat: no-repeat;
-    z-index: -1; /* Send it behind the content */
-    opacity: 0.7; /* Adjust transparency */
-    transform: rotate(5deg); /* Optional slight rotation */
+    z-index: -1;
+    opacity: 0.7; 
+    transform: rotate(5deg); 
 }
 
-
 .meditating-img {
-    max-width: 300px; /* Adjusted image size */
+    max-width: 300px; 
     height: auto;
     display: block;
     margin-bottom: 0;
 }
 
-/* This is the SPECIFIC white box for the greeting and buttons ONLY */
 .hero-greeting-box {
     background: white;
-    padding: 30px 40px; /* Internal padding for the white box */
+    padding: 30px 40px; 
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Shadow for the box */
-    flex-grow: 1; /* Allows it to take up remaining space */
-    min-width: 380px; /* Ensures it's not too narrow */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); 
+    flex-grow: 1; 
+    min-width: 380px; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center content inside itself */
+    justify-content: center; 
 }
 
-/* No direct styling for main-dashboard-section as it's now inside the white box */
 .main-dashboard-section {
-    width: 100%; /* Ensure it fills its parent */
-    text-align: left; /* Keep text left aligned */
+    width: 100%; 
+    text-align: left; 
 }
 
 
@@ -375,13 +371,13 @@ footer p:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 40px; /* Separates the cards from the top section */
+    margin-top: 40px; 
     width: 100%;
     padding: 0;
 }
 
 .home-card {
-    position: relative; /* Crucial for positioning the splash */
+    position: relative; 
     background: white;
     border-radius: 14px;
     padding: 20px 25px;
@@ -391,7 +387,7 @@ footer p:hover {
     flex-direction: column;
     justify-content: space-between;
     min-height: 150px;
-    overflow: hidden; /* Ensures splash doesn't bleed too far */
+    overflow: hidden; 
 }
 
 .home-card:hover {
@@ -406,7 +402,7 @@ footer p:hover {
     display: flex;
     align-items: center;
     gap: 8px;
-    z-index: 1; /* Keep text above the splash */
+    z-index: 1; 
 }
 
 .home-card .icon {
@@ -420,7 +416,7 @@ footer p:hover {
     color: #444;
     margin: 0;
     line-height: 1.5;
-    z-index: 1; /* Keep text above the splash */
+    z-index: 1; 
 }
 
 .home-card ul {
@@ -450,7 +446,6 @@ footer p:hover {
     height: auto;
 }
 
-/* Specific card tweaks if needed */
 .tip-card {
     background: #e9faff;
 }
@@ -463,23 +458,20 @@ footer p:hover {
     background: #f2fdf2;
 }
 
-/* New CSS for the yellow splash behind the appointment card */
 .appointment-card.yellow-splash::before {
     content: '';
     position: absolute;
-    /* Adjust these values to position the splash correctly */
-    bottom: -30px; /* Moves it down */
-    right: -30px; /* Moves it right */
-    width: 120%; /* Make it larger */
-    height: 120%; /* Make it larger */
-    background-image: url('../public/images/appointment_splash_yellow.png'); /* **REMEMBER TO REPLACE WITH YOUR ACTUAL IMAGE PATH** */
+    bottom: -30px; 
+    right: -30px; 
+    width: 120%;
+    height: 120%; 
+    background-image: url('../public/images/appointment_splash_yellow.png');
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: 0; /* Send it behind the content but above card background */
+    z-index: 0;
     opacity: 0.8;
-    transform: rotate(-10deg); /* Optional slight rotation */
+    transform: rotate(-10deg); 
 }
-
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
@@ -638,7 +630,7 @@ footer p:hover {
 .splash {
   position: absolute;
   opacity: 0.5;
-  mix-blend-mode: screen; /* Makes it feel "glowy" */
+  mix-blend-mode: screen; 
   z-index: -1;
 }
 
@@ -654,3 +646,9 @@ footer p:hover {
   width: 400px;
 }
 
+.form-check-label {
+  color: #555;
+}
+.form-check-input:invalid ~ .form-check-label {
+  color: red;
+}
