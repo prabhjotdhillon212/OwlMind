@@ -31,21 +31,8 @@ include 'db_connection.php';
                 <?php
                     if (isset($_SESSION['accountID'])) {                
                         $accountID = $_SESSION['accountID'];
-
-                        try {
-                            $sql = $db->prepare("SELECT fname FROM Student WHERE accountID='$accountID'");
-                            $result = $sql->execute();
-
-                            $user = $result->fetchArray(SQLITE3_ASSOC);
-                            if($user) {
-                                $username = $user['fname'];
-                                echo "<h1 class='hero-heading'>Welcome, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
-                            } else {
-                                echo "<h1 class='hero-heading'>User not found :( ";
-                            }
-                        } catch (SQLite3Exception $e) {
-                            echo "Error: ". $e->getMessage();
-                        }
+                        $username = $_SESSION['fname'];
+                        echo "<h1 class='hero-heading'>Welcome, <span class='hero-name'>$username</span>!<span class='wave'>👋</span></h1>";
                     } else {
                         echo "<h1 class='hero-heading'  >Uh Oh...</h1>";
                     }

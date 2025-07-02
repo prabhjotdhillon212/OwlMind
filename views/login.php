@@ -14,7 +14,7 @@ ini_set('display_errors', 0);
     $password = $_POST['password'];
 
   try {
-    $sql = $db->prepare("SELECT * FROM Account WHERE email='$email' AND password='$password'");
+    $sql = $db->prepare("SELECT * FROM Account INNER JOIN Student ON Student.accountID = Account.accountID WHERE email='$email' AND password='$password'");
     $result = $sql->execute();
     $user = $result->fetchArray(SQLITE3_ASSOC);
     
@@ -22,6 +22,10 @@ ini_set('display_errors', 0);
     if ($user['email'] == $email && $user['password'] == $password) {
       $_SESSION['accountID'] = $user['accountID'];
       $_SESSION['email'] = $user['email'];
+      $_SESSION['studentID'] = $user['studentID'];
+      $_SESSION['fname'] = $user['fname'];
+      $_SESSION['lname'] = $user['lname'];
+      $_SESSION['phoneNum'] = $user['phoneNum'];
       header("Location: home.php");
       exit();
     } else {

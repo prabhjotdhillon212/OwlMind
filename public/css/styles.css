@@ -638,4 +638,8 @@ footer p:hover {
   width: 400px;
 }
 
+.field > .edit-button, .field > input {
+    width: 100%;
+}
+
 
