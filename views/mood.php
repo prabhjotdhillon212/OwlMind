@@ -24,15 +24,20 @@ if (!$studentID) {
   exit();
 }
 
-// Handle mood submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID'])) {
+// Handle mood submission (always insert, no more update)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID']) && isset($_POST['confirm'])) {
   $moodID = $_POST['moodID'];
   $timestamp = date('Y-m-d H:i:s');
-  $stmt = $db->prepare("INSERT INTO Moodtracker (moodID, studentID, timestamp) VALUES (?, ?, ?)");
-  $stmt->bindValue(1, $moodID);
-  $stmt->bindValue(2, $studentID);
-  $stmt->bindValue(3, $timestamp);
-  $stmt->execute();
+
+  // Insert new mood entry
+  $insertStmt = $db->prepare("
+    INSERT INTO Moodtracker (moodID, studentID, timestamp)
+    VALUES (?, ?, ?)
+  ");
+  $insertStmt->bindValue(1, $moodID);
+  $insertStmt->bindValue(2, $studentID);
+  $insertStmt->bindValue(3, $timestamp);
+  $insertStmt->execute();
 }
 ?>
 
@@ -40,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID'])) {
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
-<!-- Custom Styles -->
+<!-- Custom Styles (Unchanged) -->
 <style>
   body {
     background: linear-gradient(to right, #d4f1f9, #e6faff);
@@ -61,70 +66,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID'])) {
   h1, h2 {
     color: #264653;
   }
-
-  .mood-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 40px;
-  }
-
-  .mood-button {
-    background-color: white;
-    color: #264653;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 40px;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-  }
-
-  .mood-button:hover {
-    background-color: #d0f0ff;
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-
-.calendar-container {
-  background: white;
-  border-radius: 20px;
-  padding: 25px;
-  width: 100%;
-  max-width: 900px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-  margin-bottom: 60px;
-}
-
-#calendar {
-  width: 100%;
-  height: auto;
-  min-height: 550px;
-  font-size: 0.85rem;
-}
-
-  .fc-daygrid-event {
-    display: inline-block !important;
-  }
-
-  .calendar-heading {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #264653;
-  }
 </style>
 
 <main class="wrapper">
   <h1>How are you feeling today?</h1>
-  <form method="POST">
-    <div class="mood-buttons">
+  <form id="moodForm" method="POST">
+    <input type="hidden" name="moodID" id="moodID">
+    <input type="hidden" name="confirm" value="1">
+    <div class="mood-scroll">
       <?php
         $moods = $db->query("SELECT moodID, mood FROM Moods");
         while ($row = $moods->fetchArray(SQLITE3_ASSOC)):
       ?>
-        <button type="submit" name="moodID" value="<?= $row['moodID'] ?>" class="mood-button">
+        <button type="button" class="mood-button" onclick="handleMoodClick(<?= $row['moodID'] ?>, '<?= htmlspecialchars($row['mood']) ?>')">
           <?= htmlspecialchars($row['mood']) ?>
         </button>
       <?php endwhile; ?>
@@ -139,11 +93,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID'])) {
 
 <!-- FullCalendar Script -->
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  function handleMoodClick(moodID, moodName) {
+    if (confirm("Add this mood: " + moodName + "?")) {
+      submitMood(moodID);
+    }
+  }
+
+  function submitMood(moodID) {
+    document.getElementById('moodID').value = moodID;
+    document.getElementById('moodForm').submit();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar');
     const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      aspectRatio: 2.5,
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listWeek'
+      },
+      windowResize: function(arg) {
+        // Switch to list view on small screens
+        if (arg.view.calendar.el.offsetWidth < 576) {
+          calendar.changeView('listWeek');
+        } else {
+          calendar.changeView('dayGridMonth');
+        }
+      },
       events: [
         <?php
           $stmt = $db->prepare("
@@ -158,8 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID'])) {
           while ($entry = $calendarLogs->fetchArray(SQLITE3_ASSOC)):
             $emoji = htmlspecialchars($entry['mood']);
             $date = date('Y-m-d', strtotime($entry['timestamp']));
-        ?>
-        {
+        ?> {
           title: '<?= $emoji ?>',
           start: '<?= $date ?>'
         },

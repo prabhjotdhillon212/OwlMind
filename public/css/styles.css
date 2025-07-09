@@ -65,15 +65,16 @@ main {
 /* ===== CARD FORM CONTAINER (general purpose for login/signup etc) ===== */
 .main-card {
     background: white;
-    padding: 35px 30px;
+    padding: 20px 35px; 
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    max-width: 380px;
+    max-width: 380px; 
     width: 100%;
     text-align: center;
-    margin: 20px;
+    margin: 30px 20px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 
 .main-card:hover {
     transform: translateY(-4px);
@@ -88,15 +89,16 @@ main {
     letter-spacing: 0.5px;
 }
 
+
 /* ===== FORM FIELDS ===== */
 .form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .form input {
-    padding: 12px 15px;
+    padding: 10px 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
@@ -649,8 +651,195 @@ footer p:hover {
 
 /* TOS */
 .form-check-label {
-  color: #555;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    color: #444;
 }
-.form-check-input:invalid ~ .form-check-label {
-  color: red;
+.form-check-label strong {
+    color: #c1121f; 
+}
+ 
+  /* Mood + Calendar  */
+
+  .mood-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;
+    scroll-behavior: smooth;
+  }
+
+  .mood-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  .mood-scroll::-webkit-scrollbar-thumb {
+    background: #a0d29e;
+    border-radius: 4px;
+  }
+
+  .mood-button {
+    background-color: white;
+    color: #264653;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    flex: 0 0 auto;
+  }
+
+  .mood-button:hover {
+    background-color: #d0f0ff;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  .calendar-container {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+    margin-bottom: 60px;
+  }
+
+  #calendar {
+    width: 100%;
+    min-height: 550px;
+    font-size: 0.85rem;
+  }
+
+  .fc-daygrid-event {
+    display: inline-block !important;
+  }
+
+  .calendar-heading {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #264653;
+  }
+
+
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: 15px;
+    }
+    #calendar {     
+        font-size: 0.8rem;
+    
+        min-height: auto; 
+    }
+
+    .calendar-heading {
+        font-size: 1.5rem;
+    }
+    .fc-header-toolbar {
+
+        flex-direction: column;
+        gap: 10px; 
+    }
+}
+
+@media (max-width: 480px) {
+    #calendar {
+        font-size: 0.7rem;
+    }
+
+    .fc-col-header-cell-cushion {
+        font-size: 0.75rem;
+    }
+}
+
+  /* ===== PROFILE PAGE ===== */
+.profile-card {
+    background: #ffffff;
+    padding: 50px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #dcefff;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #0077b6;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-form fieldset {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    gap: 10px;
+}
+
+.profile-form label {
+    flex: 1;
+    text-align: right;
+    font-weight: 600;
+    color: #333;
+}
+
+.profile-form input {
+    flex: 2;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.profile-form input:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.2);
+}
+
+.edit-button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button:hover {
+    background-color: #005f8f;
+    transform: translateY(-2px);
+}
+
+.reset-password {
+    display: inline-block;
+    margin-top: 15px;
+    color: #0077b6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.reset-password:hover {
+    text-decoration: underline;
 }
