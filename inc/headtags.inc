@@ -12,6 +12,5 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
   <!-- CSS -->
-  <link href="<?php echo BASE_URL; ?>public/css/styles.css" rel="stylesheet" type="text/css">
-  <link href="<?php echo BASE_URL; ?>public/css/responsive.css" rel="stylesheet" type="text/css">
+  <link href="/SCSU-CSC400/public/css/styles.css" rel="stylesheet">
 </head>

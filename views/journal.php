@@ -58,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $entry = htmlspecialchars(trim($_POST['entry']));
         $timestamp = date('Y-m-d H:i:s');
         try {
-            // Fixed: Removed entryID from INSERT because AUTOINCREMENT handles it
             $stmt = $db->prepare("INSERT INTO Journal (studentID, entry, timestamp) VALUES (:studentID, :entry, :timestamp)");
             $stmt->bindValue(':studentID', $studentID, SQLITE3_INTEGER);
             $stmt->bindValue(':entry', $entry, SQLITE3_TEXT);
@@ -129,6 +128,6 @@ $entries = $stmt->execute();
         <p class="text-muted fst-italic text-center">No reflections saved yet.</p>
       <?php endif; ?>
     </div>
-
   </section>
 </main>
+<?php include(ROOT_PATH . "inc/footer.inc"); ?>

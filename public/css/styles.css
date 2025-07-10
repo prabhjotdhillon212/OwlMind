@@ -456,24 +456,6 @@ footer p:hover {
     background: #fff9f0;
 }
 
-.appointment-card {
-    background: #f2fdf2;
-}
-
-.appointment-card.yellow-splash::before {
-    content: '';
-    position: absolute;
-    bottom: -30px; 
-    right: -30px; 
-    width: 120%;
-    height: 120%; 
-    background-image: url('../public/images/appointment_splash_yellow.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 0;
-    opacity: 0.8;
-    transform: rotate(-10deg); 
-}
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
@@ -648,13 +630,7 @@ footer p:hover {
   width: 400px;
 }
 
-.field > .edit-button, .field > input {
-    width: 100%;
-}
 
-<<<<<<< HEAD
-/* ===== PROFILE PAGE ===== */
-=======
 /* TOS */
 .form-check-label {
     font-size: 0.88rem;
@@ -665,105 +641,108 @@ footer p:hover {
     color: #c1121f; 
 }
  
-  /* Mood + Calendar  */
+/* Mood + Calendar*/
 
-  .mood-scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 10px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 800px;
-    scroll-behavior: smooth;
-  }
+.mood-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 800px;
+  scroll-behavior: smooth;
+}
 
-  .mood-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-  .mood-scroll::-webkit-scrollbar-thumb {
-    background: #a0d29e;
-    border-radius: 4px;
-  }
+.mood-scroll::-webkit-scrollbar {
+  height: 8px;
+}
 
-  .mood-button {
-    background-color: white;
-    color: #264653;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 40px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-    flex: 0 0 auto;
-  }
+.mood-scroll::-webkit-scrollbar-thumb {
+  background: #a8dadc; 
+  border-radius: 4px;
+}
 
-  .mood-button:hover {
-    background-color: #d0f0ff;
-    transform: scale(1.05);
-    cursor: pointer;
-  }
+.mood-button {
+  background-color: #f1faee; 
+  color: #1d3557;          
+  border: 2px solid #a8dadc;
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+  flex: 0 0 auto;
+}
 
-  .calendar-container {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    width: 100%;
-    max-width: 900px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-    margin-bottom: 60px;
-  }
+.mood-button:hover {
+  background-color: #a8dadc; 
+  color: #f1faee;           
+  transform: scale(1.08);
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
 
-  #calendar {
-    width: 100%;
-    min-height: 550px;
-    font-size: 0.85rem;
-  }
+.mood-button:hover {
+  filter: brightness(0.9);
+  transform: scale(1.05);
+}
 
-  .fc-daygrid-event {
-    display: inline-block !important;
-  }
+.calendar-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+}
 
-  .calendar-heading {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #264653;
-  }
+#calendar {
+  width: 100%;
+  min-height: 550px;
+  font-size: 0.85rem;
+}
 
+.fc-daygrid-event {
+  display: inline-block !important;
+}
+
+.calendar-heading {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #264653; /* Deep green-blue */
+}
 
 @media (max-width: 768px) {
-    .calendar-container {
-        padding: 15px;
-    }
-    #calendar {     
-        font-size: 0.8rem;
-    
-        min-height: auto; 
-    }
-
-    .calendar-heading {
-        font-size: 1.5rem;
-    }
-    .fc-header-toolbar {
-
-        flex-direction: column;
-        gap: 10px; 
-    }
+  .calendar-container {
+    padding: 15px;
+  }
+  #calendar {
+    font-size: 0.8rem;
+    min-height: auto;
+  }
+  .calendar-heading {
+    font-size: 1.5rem;
+  }
+  .fc-header-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 480px) {
-    #calendar {
-        font-size: 0.7rem;
-    }
-
-    .fc-col-header-cell-cushion {
-        font-size: 0.75rem;
-    }
+  #calendar {
+    font-size: 0.7rem;
+  }
+  .fc-col-header-cell-cushion {
+    font-size: 0.75rem;
+  }
 }
 
   /* ===== PROFILE PAGE ===== */
->>>>>>> recovered-wip
 .profile-card {
     background: #ffffff;
     padding: 50px 40px;
@@ -849,8 +828,4 @@ footer p:hover {
 
 .reset-password:hover {
     text-decoration: underline;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> recovered-wip
