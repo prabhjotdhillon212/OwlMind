@@ -130,4 +130,8 @@
       this.closest('fieldset').appendChild(submitButton);
     });
   });
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> recovered-wip
