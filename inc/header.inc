@@ -31,7 +31,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>img/favicon.png">
 </head>
-<body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
