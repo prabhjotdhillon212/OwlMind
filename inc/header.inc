@@ -14,6 +14,10 @@ if (!defined("ROOT_PATH")) {
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
