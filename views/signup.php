@@ -25,66 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $id = trim($_POST['student_id']);
     $email = strtolower(trim($_POST['email']));
     $password = $_POST['password'];
-<<<<<<< HEAD
-    $password_repeat = $_POST['confirm'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $phone = $_POST['phone'];
-
-  try {
-    if ($password != $password_repeat) {
-      $err = "Passwords must match";
-    } elseif (strlen($phone) != 10 || !(is_numeric($phone))) {
-      $err = "Phone numbers must be 10 digits. Enter numbers only.";
-    } elseif (strlen($id) != 8 || !(is_numeric($id))) {
-      $err = "Student ID must be 8 digits. Enter only numbers."; 
-    } elseif (item_exists($db,$email, 'email')) {
-      $err = "Email address already exists. Please <a href='login.php'>log in</a>.";
-    } elseif (item_exists($db, $id, 'studentID')) {
-      $err = "Student ID already in use.";
-    } else {
-      $sql = $db->prepare("INSERT INTO account (email, password) VALUES (:email, :password)");
-      $sql->bindValue(':email', $email, SQLITE3_TEXT);
-      $sql->bindValue(':password', $password, SQLITE3_TEXT);
-      $sql->execute();
-
-      // Get $account_id to set session variable:
-      $account_id = $db->lastInsertRowID();
-
-      $sql = $db->prepare("INSERT INTO Student (studentID, fname, lname, phoneNum, accountID) VALUES (:id, :fname, :lname, :phone, :account_id)");
-      $sql->bindValue(':id', $id, SQLITE3_TEXT);
-      $sql->bindValue(':fname', $fname, SQLITE3_TEXT);
-      $sql->bindValue(':lname', $lname, SQLITE3_TEXT);
-      $sql->bindValue(':phone', $phone, SQLITE3_TEXT);
-      $sql->bindValue(':account_id', $account_id, SQLITE3_TEXT);
-      $sql->execute();
-
-      // Set $_SESSION['accountID']:
-      $_SESSION['accountID'] = $account_id;
-
-      // Set $_SESSION['email']: 
-      $sql = $db->prepare("SELECT * FROM Account WHERE email='$email'");
-      $result = $sql->execute();
-      $email = $result->fetchArray(SQLITE3_ASSOC);
-      $_SESSION['user_data'] = array(
-        'id' => $id,
-        'fname' => $fname,
-        'lname' => $lname,
-        'phoneNum' => $phone,
-        'account_id' => $account_id,
-        'email' => $email
-      );
-
-      header("Location: home.php");
-      exit();
-    }
-  } catch (SQLite3Exception $e) {
-    // echo "Error: " . $e->getMessage();
-    // echo "Error Code: " . $e->getCode();
-  } finally {
-    if($db) $db->close();
-  }
-=======
     $confirm = $_POST['confirm'];
     $fname = ucfirst(trim($_POST['fname']));
     $lname = ucfirst(trim($_POST['lname']));
@@ -175,34 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $db->close();
         }
     }
->>>>>>> recovered-wip
 }
 end_script:
 ?>
 
 <main class="d-flex justify-content-center align-items-center p-4" style="min-height: 100vh;">
     <div class="main-card fade-in">
-<<<<<<< HEAD
-      <h1>Create an Account</h1>
-      <?php
-        // if incorrect entries, throw error message:
-        if (isset($err)) {
-          echo "<p class='fw-semibold text-danger'>" . $err . "</p>";
-        }
-      ?>
-      <form action="" method="POST" class="form" id="signupForm">
-        <input type="text" name="fname" placeholder="First Name" required />
-        <input type="text" name="lname" placeholder="Last Name" required />
-        <input type="text" name="phone" placeholder="Phone Number (e.g., 2035551234)" required />
-        <input type="email" name="email" placeholder="abc123@southernct.edu" required />
-        <input type="text" name="student_id" placeholder="Southern Student ID" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="password" name="confirm" placeholder="Confirm Password" required />
-        <p class="error" id="emailError" style="display: none;">Only southernct.edu emails are allowed.</p>
-        <button type="submit" class="btn">Sign Up</button>
-        <p class="form-footer">Already have an account? <a href="login.php">Log In</a></p>
-      </form>
-=======
         <h1>Create an Account</h1>
 
         <?php
@@ -237,7 +155,6 @@ end_script:
             <button type="submit" class="btn">Sign Up</button>
             <p class="form-footer">Already have an account? <a href="login.php">Log In</a></p>
         </form>
->>>>>>> recovered-wip
     </div>
 </main>
 
@@ -255,13 +172,6 @@ form.addEventListener("submit", (e) => {
         errorMsg.style.display = "block";
     } else {
         errorMsg.style.display = "none";
-<<<<<<< HEAD
-      }
-    });
-  </script>
-</body>
-=======
     }
 });
 </script>
->>>>>>> recovered-wip
