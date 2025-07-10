@@ -22,6 +22,7 @@ include 'db_connection.php';
     <?php endif; ?>
     <main class="home-hero">
 
+
         <!-- Global Splashes -->
         <div class="site-splashes">
             <img src="<?php echo BASE_URL; ?>public/images/splash-blue.png" class="splash splash-top-left"
