@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['moodID']) && isset($_
     transform: scale(1.05);
   }
 
-  /* Mood-specific softer pastel colors */
+  /* Mood-specific*/
   .mood-happy      { background-color: #d4edda; color: #155724; } /* soft green */
   .mood-sad        { background-color: #d1ecf1; color: #0c5460; } /* soft blue */
   .mood-angry      { background-color: #f8d7da; color: #721c24; } /* soft red */
