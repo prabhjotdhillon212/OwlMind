@@ -72,14 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         'email' => $email
       );
 
-      if (sendWelcomeEmail($email, $fname . ' ' . $lname)) {
-        $_SESSION['success_message'] = "✅ Account created successfully! A welcome email has been sent.";
-      } else {
-        $_SESSION['warning_message'] = "✅ Account created successfully, but we couldn't send the welcome email. Please check your spam folder.";
-        error_log("⚠️ Failed to send welcome email to $email after successful signup.");
-      }
-
-      header("Location: home.php");
+      header("Location: test_mail.php");
       exit();
     }
   } catch (SQLite3Exception $e) {
