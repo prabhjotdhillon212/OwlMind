@@ -7,7 +7,6 @@ ini_set('display_errors', 0);
 
 include 'db_connection.php';
 
-<<<<<<< HEAD
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -36,7 +35,7 @@ include 'db_connection.php';
   } finally {
     if($db) $db->close();
   }
-=======
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = strtolower(trim($_POST['email']));
     $password = $_POST['password'];
@@ -70,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } finally {
         if ($db) $db->close();
     }
->>>>>>> recovered-wip
+  }
 }
 ?>
 
@@ -80,14 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="main-card fade-in">
       <h1>Log In</h1>
       <?php
-<<<<<<< HEAD
         // if incorrect login credentials, throw error message:
         if (isset($login_err)) {
           echo "<div style='color: red'>" . $login_err . "</div>";
-=======
+        }
         if (isset($login_err)) {
             echo "<div class='text-danger fw-semibold'>" . $login_err . "</div>";
->>>>>>> recovered-wip
         }
       ?>
       <form action="" method="POST" class="form" id="loginForm">

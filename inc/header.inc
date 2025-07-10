@@ -14,6 +14,10 @@ if (!defined("ROOT_PATH")) {
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +35,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>img/favicon.png">
 </head>
-<body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -55,19 +58,6 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/about.php"><?php echo NAV_ITEM_SEVEN; ?></a></li>
                         <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/logout.php">Logout</a></li>
                     <?php endif; ?>
-          <?php if (isset($auth_only_nav) && $auth_only_nav): ?>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/signup.php">Sign Up</a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/login.php">Log In</a></li>
-          <?php elseif (isset($_SESSION['email'])): ?>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/home.php"><?php echo NAV_ITEM_ONE; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/journal.php"><?php echo NAV_ITEM_THREE; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/mood.php"><?php echo NAV_ITEM_FOUR; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/resources.php"><?php echo NAV_ITEM_FIVE; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/profile.php"><?php echo NAV_ITEM_SIX; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/about.php"><?php echo NAV_ITEM_SEVEN; ?></a></li>
-            <li class="nav-item"><a class="nav-link" href="<?php echo BASE_URL; ?>views/logout.php">Logout</a></li>
-          <?php endif; ?>
-
                 </ul>
             </div>
         </div>
