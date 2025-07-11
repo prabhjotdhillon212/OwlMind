@@ -27,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $phone = preg_replace('/\s+/', '', trim($_POST['phone'])); // remove spaces in phone numbers
 
     try {
-        if ($password !== $password_repeat) {
-            $err = "Passwords must match.";
-        } elseif (!preg_match('/^\d{10}$/', $phone)) {
-            $err = "Phone number must be 10 digits.";
-        } elseif (!preg_match('/^\d{8}$/', $id)) {
-            $err = "Student ID must be 8 digits.";
-        } elseif (item_exists($db, $email, 'email')) {
+        if ($password != $password_repeat) {
+            $err = "Passwords must match";
+        } elseif (strlen($phone) != 10 || !(is_numeric($phone))) {
+            $err = "Phone numbers must be 10 digits. Enter numbers only.";
+        } elseif (strlen($id) != 8 || !(is_numeric($id))) {
+            $err = "Student ID must be 8 digits. Enter only numbers."; 
+        } elseif (item_exists($db,$email, 'email')) {
             $err = "Email already exists. Please <a href='login.php'>log in</a>.";
         } elseif (item_exists($db, $id, 'studentID')) {
             $err = "Student ID already in use.";
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 $_SESSION['warning_message'] = "✅ Account created successfully, but we couldn't send the welcome email. Check your spam folder.";
             }
 
-            header("Location: home.php");
+            header("Location: verify.php");
             exit();
         }
     } catch (SQLite3Exception $e) {
