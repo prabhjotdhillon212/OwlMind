@@ -9,17 +9,6 @@ include 'db_connection.php';
 ?>
 
 <body>
-    <?php if (isset($_SESSION['success_message'])): ?>
-    <div class="alert alert-success fw-semibold">
-        <?= $_SESSION['success_message']; ?>
-    </div>
-    <?php unset($_SESSION['success_message']); ?>
-    <?php elseif (isset($_SESSION['warning_message'])): ?>
-    <div class="alert alert-warning fw-semibold">
-        <?= $_SESSION['warning_message']; ?>
-    </div>
-    <?php unset($_SESSION['warning_message']); ?>
-    <?php endif; ?>
     <main class="home-hero">
 
 

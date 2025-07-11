@@ -15,7 +15,11 @@ if (isset($_POST['verify'])) {
     $verify_code = $_SESSION['code'];
     $user_input = $_POST['verify'];
 
+    $account_id = $_SESSION['accountID'];
+
     if ($verify_code === $user_input) {
+        $updateverify = $db->prepare("UPDATE Account SET verified = 1 WHERE accountID=$account_id");
+        $updateverify->execute();
         header("Location: home.php");
         exit();
     } else {
@@ -28,11 +32,19 @@ if (isset($_POST['verify'])) {
 <body>
   <!-- Navbar -->
   <?php include ROOT_PATH . "inc/header.inc"; ?>
+
+  <?php if (isset($_SESSION['success_message'])): ?>
+    <div class="alert alert-success fw-semibold">
+        <?= $_SESSION['success_message']; ?>
+    </div>
+    <?php unset($_SESSION['success_message']); ?>
+    <?php elseif (isset($_SESSION['warning_message'])): ?>
+    <div class="alert alert-warning fw-semibold">
+        <?= $_SESSION['warning_message']; ?>
+    </div>
+    <?php unset($_SESSION['warning_message']); ?>
+    <?php endif; ?>
   <main>
-    <?php
-        echo $verify_code = $_SESSION['code'];
-        echo $user_input = $_POST['verify'];
-    ?>
     <div class="main-card profile-card fade-in">
         <h1>Hello, <?php echo $_SESSION['fname'] ?>!</h1>
         <h2>Enter the 5-digit verification code:</h2>
