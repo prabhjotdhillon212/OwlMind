@@ -3,7 +3,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+
 function sendWelcomeEmail($toEmail, $toName) {
+
+    // generate random 5 digit number and add it to email. For verification.
+    $num_digits = 5;
+    $verify_code = str_pad(rand(0, pow(10, $num_digits)-1), $num_digits, '0', STR_PAD_LEFT);
+    $_SESSION['code'] = $verify_code;
+
     $mail = new PHPMailer(true);
 
     try {
@@ -33,6 +40,8 @@ function sendWelcomeEmail($toEmail, $toName) {
                 <p>Hi " . htmlspecialchars($toName) . ",</p>
                 <p>We’re excited to have you here! Start journaling, track your moods, and take care of your mental wellness with us.</p>
                 <p><strong>Let’s get started!</strong></p>
+                <p><strong>Enter the following code on the verification page:</strong></p>
+                <p> $verify_code </p>
                 <p style='color:#888;'>– The Owl Mind Team</p>
             </div>
         ";
