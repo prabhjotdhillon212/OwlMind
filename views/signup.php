@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             // Send welcome email
             if (sendWelcomeEmail($email, "$fname $lname")) {
-                $_SESSION['success_message'] = "✅ Account created successfully! A verification email has been sent to " . $email;
+                $_SESSION['success_message'] = "✅ Account created successfully! A verification email has been sent to " . $email . ".";
             } else {
                 $_SESSION['warning_message'] = "✅ Account created successfully, but we couldn't send the welcome email to " . $email . ". Check your spam folder.";
             }

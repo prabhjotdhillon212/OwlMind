@@ -23,7 +23,7 @@ if (isset($_POST['verify'])) {
         header("Location: home.php");
         exit();
     } else {
-        $err = "The code you entered is not correct";
+        $err = "The code you entered is not correct.";
     }
 }
 
